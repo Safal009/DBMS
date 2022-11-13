@@ -1,0 +1,30 @@
+//Create
+db.createCollection('Library');
+
+//Insert
+db.library.insert({'bookid':1,'bookn':'Python'});
+db.library.insertOne({'bookid':2,'bookn':'C++'});
+db.library.insertOne({'bookid':3,'bookn':'Java'});
+db.library.insertOne({'bookid':4,'bookn':'Solana'});
+
+//Read
+db.library.find().pretty();
+
+//Update
+db.library.update({"bookn":"Python"},{$set:{"bookn:"Python 3.7"}});
+
+//Remove
+db.library.remove({"bookid":2});
+
+//Find specific
+ db.library.find({"bookn":"Solana"})
+
+db.library.insertOne({"bookid":5,"bookn":"SQL"})
+
+db.library.insertOne({"bookid":6,"bookn":"HTML","desc":"Fake programming lang"})
+
+db.library.insertOne({"bookid":7,"bookn":"Solana","desc":"Fake book"})
+
+//LOGICAL OPERATORS
+and : db.library.find({$and:[{"bookn":"Solana"},{"bookid":4}]})
+or : db.library.find({$or:[{"bookn":"Solana"},{"bookid":4}]})
